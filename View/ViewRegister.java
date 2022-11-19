@@ -1,6 +1,7 @@
 package View;
 
 import Controller.*;
+import Model.*;
 
 public class ViewRegister extends View {
     public RegisterController registerController;
@@ -17,6 +18,7 @@ public class ViewRegister extends View {
         String password;
         String phone;
         String address;
+        User user;
 
         System.out.print("Masukkan nama : ");
         name = input.nextLine();
@@ -29,7 +31,8 @@ public class ViewRegister extends View {
         System.out.print("Masukkan address : ");
         address = input.nextLine();
 
-        registerController.generateUser(name, username, password, phone, address, dbController);
+        user = registerController.generateUser(name, username, password, phone, address);
+        registerController.storeUser(user, dbController.dbUser);
     }
 
 }
